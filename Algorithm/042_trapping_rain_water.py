@@ -1,6 +1,6 @@
-# https://leetcode.com/problems/container-with-most-water/
+# https://leetcode.com/problems/trapping-rain-water/
 
-height = [1,8,6,2,5,4,8,3,7]
+height = [4,2,3]
 
 def løsning(ns):
     ns_v = [(0, ns[0])]
@@ -11,7 +11,8 @@ def løsning(ns):
         if ns[len(ns)-i-1] > ns_h[-1][1]:
             ns_h.append((len(ns)-i-1, ns[len(ns)-i-1]))
 
-    m = 0
+    f = 0
+    totalarea = 0
 
     pv = 0
     ph = 0
@@ -19,7 +20,8 @@ def løsning(ns):
         x1,y1 = ns_v[pv]
         x2,y2 = ns_h[ph]
 
-        m = max(m, min(y1,y2)*(x2-x1))
+        totalarea += min(y1-f,y2-f)*(x2-x1+1)
+        f = min(y1,y2)
 
         if y1 > y2:
             ph += 1
@@ -31,6 +33,7 @@ def løsning(ns):
         
         if pv >= len(ns_v) or ph >= len(ns_h):
             break
-    return m
+    
+    return totalarea-sum(ns)
 
-print(løsning(height)) 
+print(løsning(height))
