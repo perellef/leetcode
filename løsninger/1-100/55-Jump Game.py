@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/spiral-matrix/description/
+# https://leetcode.com/problems/jump-game/description/
 
 nums = [3,2,1,0,4]
 
